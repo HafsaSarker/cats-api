@@ -1,4 +1,5 @@
-export default function QueryRes(){
+export default function QueryRes({data}){
+    //console.log(data);
     return (
         <div>
             <h2>Name</h2>

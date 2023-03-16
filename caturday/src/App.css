@@ -34,4 +34,11 @@
   height: 650px;
   width: 650px;
 }
-
+.attributes {
+  display: flex;
+  gap: 15px;
+}
+.attributes > button {
+  margin: 15px 0px;
+  border-bottom: solid 4px #2f3f31;
+}

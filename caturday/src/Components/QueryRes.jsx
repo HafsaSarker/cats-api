@@ -1,15 +1,27 @@
 export default function QueryRes({data}){
-    //console.log(data);
+    console.log(data);
     return (
-        <div>
-            <h2>Name</h2>
-            <div className="attributes">
-                <button>Tonkinese</button>
-                <button>6 - 12 lbs</button>
-                <button>Canada</button>
-                <button>14 - 16 years</button>
-                <img />
-            </div>
-        </div>
+        <div className="queryRes">
+               <h2>{data.name}</h2>
+                <div className="attributes">
+                    <label>
+                        origin: 
+                        <button>{data.origin}</button>
+                    </label>
+                    <label>
+                        weight:
+                        <button>{data.weight} lbs</button>
+                    </label>
+                    <label>
+                        affection level
+                        <button>{data.affectionLevel}</button>
+                    </label>
+                    <label>
+                        energy level
+                        <button>{data.energyLevel}</button>
+                    </label>
+                </div>
+                <img src={data.imgSrc}/>
+        </div> 
     )
 }

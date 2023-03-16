@@ -10,6 +10,10 @@
   min-width: 100vw;
   align-items: center;
 }
+label{
+  display: flex;
+  flex-direction: column;
+}
 .history {
   background-color: #f1f1f0;
   box-shadow: 1px 1px 10px #3f3f3f;
@@ -21,6 +25,12 @@
   background-color: #d3d6cf;
   height: 100vh;
   min-width: 250px;
+}
+.queryRes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .main-container{
   display: flex;
@@ -34,7 +44,13 @@
   height: 650px;
   width: 650px;
 }
+img {
+  width: 200px;
+  border-radius: 10px;
+  margin: 15px 0px;
+}
 .attributes {
+  margin-top: 20px;
   display: flex;
   gap: 15px;
 }

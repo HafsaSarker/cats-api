@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const api_key = "live_mvxUhH8P2fgmeBund7bjWL4t7DRrGOZtouA6bIK6pvJEQkWcr468kh4xTqlgQOYk";
+  const [dataArr, setDataArr] = useState([]);
   const [data, setData] = useState({
     name: "",
     origin: "",
@@ -12,14 +13,16 @@ function App() {
     energyLevel: null,
     imgSrc: ""
   })
-  const [showData, setShowData] = useState(false);
-  const makeQuery = () => {
-    let query = "https://api.thecatapi.com/v1/breeds";
 
-    //callAPI(query);
-    getAPI(query);
-  }
-  async function getAPI(url) {
+  const [showData, setShowData] = useState(false);
+  // const makeQuery = () => {
+  //   let query = "https://api.thecatapi.com/v1/breeds";
+
+  //   //callAPI(query);
+  //   getAPI(query);
+  // }
+  let url = "https://api.thecatapi.com/v1/breeds";
+  async function getAPI() {
     try {
       const response = await
       fetch(url,{headers: {
@@ -28,13 +31,35 @@ function App() {
       if(!response.ok){
         console.log(response.status);
       }
-      const data = await response.json();
-      console.log(data);
+      const QueryData = await response.json();
+      handleQuery(QueryData);
     }
     catch (error) {
       console.log({error});
     }
   }
+
+  function handleQuery(QueryData){
+    setDataArr(QueryData);
+    console.log(dataArr[0].image.url)
+    handleDiscover();
+  }
+
+  function handleDiscover(){
+    const { name, affection_level, origin, energy_level, weight} = dataArr[0]
+    setData(prevState => ({
+      ...prevState,
+        name: name,
+        origin: origin,
+        weight: weight.imperial,
+        affectionLevel: affection_level,
+        energyLevel: energy_level,
+        imgSrc: dataArr[0].image.url
+    }))
+    setShowData(true);
+    console.log(data);
+  }
+
   const callAPI = async (query) => {
     const response = await fetch(query, {headers: {
       'x-api-key': api_key 
@@ -69,7 +94,7 @@ function App() {
         <h3>😺</h3>
         
         {showData && <QueryRes data={data}/>}
-        <button onClick={makeQuery}>Discover</button>
+        <button onClick={getAPI}>Discover</button>
       </div> 
       <div className="banned-list">
         Banned

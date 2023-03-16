@@ -1,8 +1,37 @@
-#root {
+*{
   max-width: 1280px;
   margin: 0;
   padding: 0;
   text-align: center;
 }
-
+.App{
+  display: flex;
+  justify-content: space-between;
+  min-width: 100vw;
+  align-items: center;
+}
+.history {
+  background-color: #f1f1f0;
+  box-shadow: 1px 1px 10px #3f3f3f;
+  height: 100vh;
+  min-width: 250px;
+}
+.banned-list{
+  box-shadow: 1px 1px 10px #3f3f3f;
+  background-color: #d3d6cf;
+  height: 100vh;
+  min-width: 250px;
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f0;
+  box-shadow: 1px 1px 10px #3f3f3f;
+  border-radius: 10px;
+  height: 650px;
+  width: 650px;
+}
 

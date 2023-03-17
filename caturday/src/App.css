@@ -19,6 +19,12 @@ label{
   box-shadow: 1px 1px 10px #3f3f3f;
   height: 100vh;
   min-width: 250px;
+  overflow-y: scroll;
+}
+.cat-history > img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 .banned-list{
   box-shadow: 1px 1px 10px #3f3f3f;

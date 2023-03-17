@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import QueryRes from './Components/QueryRes'
+import History from './Components/History';
 import './App.css'
 
 function App() {
@@ -68,15 +69,13 @@ function App() {
 
     setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}])
     setShowData(true);
-    console.log(history);
+
     // console.log(data);
   }
 
   return (
     <div className="App">
-      <div className="history">
-        history
-      </div>
+      <History history={history} />
       <div className="main-container">
         <h1>A fine caturday</h1>
         <h3>Paw-don me, but is this fur real?!</h3>

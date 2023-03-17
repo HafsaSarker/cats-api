@@ -4,7 +4,12 @@ import History from './Components/History';
 import './App.css'
 
 function App() {
-  const [history, setHistory] = useState([{name: "", imgSrc: ""}]);
+  const [history, setHistory] = useState([
+    {
+      name: null, 
+      imgSrc: null
+    }
+  ]);
   const [data, setData] = useState({
     name: "",
     origin: "",
@@ -15,7 +20,7 @@ function App() {
   })
   const [index, setIndex] = useState(0);
   const [showData, setShowData] = useState(false);
-
+  const [showHistory, setShowHistory] = useState(false);
   const api_key = "live_mvxUhH8P2fgmeBund7bjWL4t7DRrGOZtouA6bIK6pvJEQkWcr468kh4xTqlgQOYk";
   
   async function getAPI() {
@@ -67,15 +72,24 @@ function App() {
       }
     ))
 
-    setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}])
+    setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}]);
+    console.log(history);
     setShowData(true);
-
+    setShowHistory(true);
     // console.log(data);
   }
 
   return (
     <div className="App">
-      <History history={history} />
+      {/* {showHistory ? (<History history={history} />) : 
+        (
+          <div className="history">
+            <h2>Browsing History</h2>
+          </div>
+        )
+      } */ }
+      <History history={history}/>
+
       <div className="main-container">
         <h1>A fine caturday</h1>
         <h3>Paw-don me, but is this fur real?!</h3>

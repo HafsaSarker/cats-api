@@ -1,5 +1,5 @@
 export default function QueryRes({data}){
-    console.log(data);
+    //console.log(data);
     return (
         <div className="queryRes">
                <h2>{data.name}</h2>

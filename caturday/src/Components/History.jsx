@@ -6,7 +6,7 @@ export default function History({history}){
                 history &&  
                 history.map((catHistory) => (
                 //console.log(catHistory)
-                catHistory.name !== null ?
+                (catHistory.name && catHistory.imgSrc) ?
                 (       
                     <div key={catHistory.name} className="cat-history">
                         <p>{catHistory.name}</p>

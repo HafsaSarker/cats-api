@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import QueryRes from './Components/QueryRes'
 import History from './Components/History';
 import './App.css'
 
 function App() {
+  const [allCats, setAllCats] = useState([]);
   const [history, setHistory] = useState([
     {
       name: null, 
@@ -20,44 +21,42 @@ function App() {
   })
   const [index, setIndex] = useState(0);
   const [showData, setShowData] = useState(false);
-  const [showHistory, setShowHistory] = useState(false);
+
   const api_key = "live_mvxUhH8P2fgmeBund7bjWL4t7DRrGOZtouA6bIK6pvJEQkWcr468kh4xTqlgQOYk";
-  
-  async function getAPI() {
-    try {
-      const response = await
-      fetch(url,{headers: {
+
+  useEffect(() => {
+    async function getAPI() {
+      const response = await fetch("https://api.thecatapi.com/v1/breeds",{headers: {
         'x-api-key': api_key
       }})
-      if(!response.ok){
-        console.log(response.status);
-      }
-      const QueryData = await response.json();
-      handleQuery(QueryData);
-    }
-    catch (error) {
-      console.log({error});
-    }
-  }
+      const queryData = await response.json();
 
-  const makeQuery = () => {
-    let url = "https://api.thecatapi.com/v1/breeds";
+      //filter data so only data with displayed attributes are in the state allCats
+      const FilteredData = queryData.filter(element => 
+        element.name && element.origin && element.affection_level && element.energy_level && element.weight.imperial && element.image?.url != null
+      );
 
-    callAPI(url);
+      //console.log(FilteredData);
+
+      //set it to allCats state var
+      setAllCats(FilteredData);
+    }
+    getAPI();
+  },[])
+  
+  const getRandomCat = () => {
+
   }
+  
+/*
   const getIndex = () => {
-    let randNum = Math.floor(Math.random() * 66)
+    let randNum = Math.floor(Math.random() * 65)
     return randNum;
   }
-  const callAPI = async (query) => {
+  const handleQuery = (query) => {
     let randIndex = getIndex();
     setIndex(randIndex);
 
-    const response = await fetch(query, {headers: {
-      'x-api-key': api_key 
-    }})
-    const json = await response.json();
-    //console.log(json)
     const { name, affection_level, origin, energy_level, weight, image} = json[index];
 
     setData(prevState => (
@@ -75,20 +74,13 @@ function App() {
     setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}]);
     console.log(history);
     setShowData(true);
-    setShowHistory(true);
     // console.log(data);
   }
 
+  */
   return (
     <div className="App">
-      {/* {showHistory ? (<History history={history} />) : 
-        (
-          <div className="history">
-            <h2>Browsing History</h2>
-          </div>
-        )
-      } */ }
-      <History history={history}/>
+      {/* <History history={history}/>
 
       <div className="main-container">
         <h1>A fine caturday</h1>
@@ -100,7 +92,7 @@ function App() {
       </div> 
       <div className="banned-list">
         Banned
-      </div>
+      </div> */}
     </div>
   )
 }

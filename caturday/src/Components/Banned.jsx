@@ -4,10 +4,10 @@ export default function Banned({bannedList}){
             <br></br>
             <h2>Banned List</h2>
             <br></br>
-
+            
             { bannedList && 
                 bannedList.map((item, index) => (
-                   <p key={index}>{item}</p> 
+                   <p className="banned-item" key={index}>{item}</p> 
                 ))
             }
         </div>

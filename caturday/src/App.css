@@ -28,6 +28,10 @@ label{
   object-fit: cover;
 }
 .banned-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   box-shadow: 1px 1px 10px #3f3f3f;
   background-color: #d3d6cf;
   height: 100vh;
@@ -61,7 +65,12 @@ img {
   display: flex;
   gap: 15px;
 }
-.attributes > button {
-  margin: 15px 0px;
-  border-bottom: solid 4px #2f3f31;
+
+.banned-item {
+  padding: 10px 15px;
+  background-color: #b16060;
+  margin: 10px 0px;
+  color: #f5f5f5;
+  border-radius: 5px;
+  cursor: pointer;
 }

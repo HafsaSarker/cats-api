@@ -8,6 +8,7 @@ function App() {
   const [history, setHistory] = useState([
     {
       name: null, 
+      origin: null,
       imgSrc: null
     }
   ]);
@@ -53,7 +54,7 @@ function App() {
       imgSrc: image.url
     }))
 
-    setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}]);
+    setHistory((prevCats) => [...prevCats, {name: name, origin:origin, imgSrc: image.url}]);
 
   }
   const getRandomCat = () => {

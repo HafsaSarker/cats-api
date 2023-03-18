@@ -1,15 +1,18 @@
 export default function History({history}){
     return (
         <div className="history">
+            <br></br>
             <h2>Browsing History</h2>
+            <br></br>
             { 
                 history &&  
                 history.map((catHistory) => (
-                //console.log(catHistory)
+
+                //avoid initial null state of "history"
                 (catHistory.name && catHistory.imgSrc) ?
                 (       
-                    <div key={catHistory.name} className="cat-history">
-                        <p>{catHistory.name}</p>
+                    <div key={catHistory.imgSrc}    className="cat-history">
+                        <p>{catHistory.name} from {catHistory.origin}</p>
                         <img src={catHistory.imgSrc}/>
                     </div> 
                 ) : ("")

@@ -6,12 +6,12 @@ export default function History({history}){
             <br></br>
             { 
                 history &&  
-                history.map((catHistory) => (
+                history.map((catHistory, index) => (
 
                 //avoid initial null state of "history"
                 (catHistory.name && catHistory.imgSrc) ?
                 (       
-                    <div key={catHistory.imgSrc}    className="cat-history">
+                    <div key={index}    className="cat-history">
                         <p>{catHistory.name} from {catHistory.origin}</p>
                         <img src={catHistory.imgSrc}/>
                     </div> 

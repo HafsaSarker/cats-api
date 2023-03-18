@@ -24,8 +24,10 @@ h1 {
 }
 
 button {
+  margin-top: 4px;
   border-radius: 8px;
-  border: 1px solid #8ba888;
+  border: none;
+  border-bottom: 4px solid #4d584b;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;

@@ -20,7 +20,7 @@ label{
   height: 100vh;
   min-width: 250px;
   overflow-y: scroll;
-  padding-right: 10px;
+  padding: 0 10px;
 }
 .cat-history > img {
   height: 100px;

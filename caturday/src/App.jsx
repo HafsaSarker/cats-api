@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import QueryRes from './Components/QueryRes'
 import History from './Components/History';
+import Banned from './Components/Banned';
 import './App.css'
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     energyLevel: null,
     imgSrc: ""
   })
-  const [index, setIndex] = useState(0);
+  const [bannedList, setBannedList] = useState([]);
   const [showData, setShowData] = useState(false);
 
   const api_key = "live_mvxUhH8P2fgmeBund7bjWL4t7DRrGOZtouA6bIK6pvJEQkWcr468kh4xTqlgQOYk";
@@ -75,13 +76,10 @@ function App() {
         <h1>A fine caturday</h1>
         <h3>Paw-don me, but is this fur real?!</h3>
         <h3>😺</h3>
-        
-        {showData && <QueryRes data={data}/>}
+        {showData && <QueryRes data={data} setBannedList={setBannedList}/>}
         <button onClick={getRandomCat}>Discover</button>
       </div> 
-      <div className="banned-list">
-        Banned
-      </div>
+      <Banned bannedList={bannedList}/>
     </div>
   )
 }

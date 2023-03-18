@@ -32,55 +32,43 @@ function App() {
       const queryData = await response.json();
 
       //filter data so only data with displayed attributes are in the state allCats
-      const FilteredData = queryData.filter(element => 
-        element.name && element.origin && element.affection_level && element.energy_level && element.weight.imperial && element.image?.url != null
-      );
+      const FilteredData = queryData.filter(element => element.image?.url != null);
 
-      //console.log(FilteredData);
 
       //set it to allCats state var
-      setAllCats(FilteredData);
+      setAllCats(FilteredData);     
     }
     getAPI();
   },[])
-  
-  const getRandomCat = () => {
 
-  }
-  
-/*
-  const getIndex = () => {
-    let randNum = Math.floor(Math.random() * 65)
-    return randNum;
-  }
-  const handleQuery = (query) => {
-    let randIndex = getIndex();
-    setIndex(randIndex);
-
-    const { name, affection_level, origin, energy_level, weight, image} = json[index];
-
-    setData(prevState => (
-      {
-        ...prevState,
-        name: name,
-        origin: origin,
-        weight: weight.imperial,
-        affectionLevel: affection_level,
-        energyLevel: energy_level,
-        imgSrc: image.url
-      }
-    ))
+  const fillData = (index) => {
+    const {name, origin, weight, affection_level, energy_level, image} = allCats[index];
+    setData(prevState => ({
+      ...prevState,
+      name: name,
+      origin: origin,
+      weight: weight.imperial,
+      affectionLevel: affection_level,
+      energyLevel: energy_level,
+      imgSrc: image.url
+    }))
 
     setHistory((prevCats) => [...prevCats, {name: name, imgSrc: image.url}]);
-    console.log(history);
-    setShowData(true);
-    // console.log(data);
-  }
 
-  */
+  }
+  const getRandomCat = () => {
+    let randNum = Math.floor(Math.random() * 65);
+    fillData(randNum);
+
+
+
+    setShowData(true);
+    setShowData(true);
+  }
+  
   return (
     <div className="App">
-      {/* <History history={history}/>
+      <History history={history}/>
 
       <div className="main-container">
         <h1>A fine caturday</h1>
@@ -88,11 +76,11 @@ function App() {
         <h3>😺</h3>
         
         {showData && <QueryRes data={data}/>}
-        <button onClick={makeQuery}>Discover</button>
+        <button onClick={getRandomCat}>Discover</button>
       </div> 
       <div className="banned-list">
         Banned
-      </div> */}
+      </div>
     </div>
   )
 }

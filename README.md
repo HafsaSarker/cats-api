@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='project4.gif' title='Video Walkthrough' width='700' alt='Video Walkthrough' />
+<img src='./caturday/public/project4.gif' title='Video Walkthrough' width='700' alt='Video Walkthrough' />
 
 
 GIF created with liceCAP 

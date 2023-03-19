@@ -1,10 +1,16 @@
-export default function QueryRes({data, setBannedList}){
+export default function QueryRes({data, setBannedList, allCats, setAllCats}){
+
     
     const handleClick = (event) => {
-        console.log(event.target.value);
-        setBannedList((prevState) => [...prevState, event.target.value]);
+        const {name, value} = event.target;
+
+        setBannedList((prevState) => [...prevState, name+" : "+value]);
+
+        const filteredCatData = allCats.filter((element) => element[name] != value);
+        
+        setAllCats(filteredCatData)
     }
-    
+
     return (
         <div className="queryRes">
                <h2>{data.name}</h2>
@@ -13,16 +19,18 @@ export default function QueryRes({data, setBannedList}){
                         origin: 
                         <button 
                             onClick={handleClick} value={data.origin}
+                            name="origin"
                         >
                             {data.origin}
                         </button>
                     </label>
                     <label>
-                        weight:
+                        intelligence:
                         <button  
-                            onClick={handleClick} value={data.weight}
+                            onClick={handleClick} value={data.intelligence}
+                            name="intelligence"
                         >
-                            {data.weight} lbs
+                            {data.intelligence}
                         </button>
                     </label>
                     <label>
@@ -30,6 +38,7 @@ export default function QueryRes({data, setBannedList}){
                         <button 
                             onClick={handleClick}
                             value={data.affectionLevel}
+                            name="affection_level"
                             >
                                 {data.affectionLevel}
                         </button>
@@ -38,6 +47,7 @@ export default function QueryRes({data, setBannedList}){
                         energy level
                         <button 
                             onClick={handleClick} value={data.energyLevel}
+                            name="energy_level"
                         >
                             {data.energyLevel}
                         </button>

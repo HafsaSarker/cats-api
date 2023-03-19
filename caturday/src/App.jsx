@@ -16,7 +16,7 @@ function App() {
   const [data, setData] = useState({
     name: "",
     origin: "",
-    weight: null,
+    intelligence: null,
     affectionLevel: null,
     energyLevel: null,
     imgSrc: ""
@@ -43,13 +43,16 @@ function App() {
     getAPI();
   },[])
 
+  // const temp = allCats.filter(element => element.name != "Turkish Van");
+  //console.log(allCats)
+
   const fillData = (index) => {
-    const {name, origin, weight, affection_level, energy_level, image} = allCats[index];
+    const {name, origin, intelligence, affection_level, energy_level, image} = allCats[index];
     setData(prevState => ({
       ...prevState,
       name: name,
       origin: origin,
-      weight: weight.imperial,
+      intelligence: intelligence,
       affectionLevel: affection_level,
       energyLevel: energy_level,
       imgSrc: image.url
@@ -60,14 +63,17 @@ function App() {
   }
   const getRandomCat = () => {
     let randNum = Math.floor(Math.random() * 65);
+    while(allCats[randNum] === undefined){
+      randNum = Math.floor(Math.random() * 65);
+    }
     fillData(randNum);
 
 
 
     setShowData(true);
-    setShowData(true);
   }
-  
+  console.log(bannedList)
+  console.log(allCats.length);
   return (
     <div className="App">
       <History history={history}/>
@@ -76,10 +82,19 @@ function App() {
         <h1>A fine caturday</h1>
         <h3>Paw-don me, but is this fur real?!</h3>
         <h3>😺</h3>
-        {showData && <QueryRes data={data} setBannedList={setBannedList}/>}
+
+        {showData && 
+          <QueryRes 
+            data={data} 
+            setBannedList={setBannedList} 
+            allCats={allCats}
+            setAllCats={setAllCats}
+          />
+        }
+
         <button onClick={getRandomCat}>Discover</button>
       </div> 
-      <Banned bannedList={bannedList}/>
+      <Banned bannedList={bannedList} />
     </div>
   )
 }

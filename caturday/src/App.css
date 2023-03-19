@@ -66,11 +66,12 @@ img {
   gap: 15px;
 }
 
-.banned-item {
+.banned-item{
   padding: 10px 15px;
   background-color: #b16060;
   margin: 10px 0px;
   color: #f5f5f5;
   border-radius: 5px;
   cursor: pointer;
+  border-bottom: solid 4px #633535;
 }

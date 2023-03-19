@@ -1,6 +1,5 @@
 export default function Banned({bannedList, setBannedList}){
     const deleteItem = (event) => {
-        console.log(event.target.value);
         const filterBannedList = bannedList.filter((element) => element != event.target.value)
 
         setBannedList(filterBannedList);

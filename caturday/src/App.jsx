@@ -69,8 +69,7 @@ function App() {
 
     setShowData(true);
   }
-  console.log(bannedList)
-  console.log(allCats.length);
+
   return (
     <div className="App">
       <History history={history}/>

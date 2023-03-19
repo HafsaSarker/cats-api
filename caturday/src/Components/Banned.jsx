@@ -1,4 +1,10 @@
-export default function Banned({bannedList}){
+export default function Banned({bannedList, setBannedList}){
+    const deleteItem = (event) => {
+        console.log(event.target.value);
+        const filterBannedList = bannedList.filter((element) => element != event.target.value)
+
+        setBannedList(filterBannedList);
+    }
     return (
         <div className="banned-list">
             <br></br>
@@ -7,7 +13,12 @@ export default function Banned({bannedList}){
             
             { bannedList && 
                 bannedList.map((item, index) => (
-                   <p className="banned-item" key={index}>{item}</p> 
+                   <button 
+                    value={item} className="banned-item" 
+                    key={index}
+                    onClick={deleteItem}
+                    >{item}
+                    </button> 
                 ))
             }
         </div>

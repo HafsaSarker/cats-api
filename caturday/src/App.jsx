@@ -43,9 +43,6 @@ function App() {
     getAPI();
   },[])
 
-  // const temp = allCats.filter(element => element.name != "Turkish Van");
-  //console.log(allCats)
-
   const fillData = (index) => {
     const {name, origin, intelligence, affection_level, energy_level, image} = allCats[index];
     setData(prevState => ({
@@ -94,7 +91,10 @@ function App() {
 
         <button onClick={getRandomCat}>Discover</button>
       </div> 
-      <Banned bannedList={bannedList} />
+      <Banned 
+        bannedList={bannedList} 
+        setBannedList={setBannedList}
+      />
     </div>
   )
 }
